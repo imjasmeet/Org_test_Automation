@@ -1,4 +1,4 @@
-template: true
+
 valuesFilePath: ../values/gitRepoValues.yml
 
 resources:
