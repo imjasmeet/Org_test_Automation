@@ -6,7 +6,7 @@ resources:
       path: jfrog/artifactory
       gitProvider: JFrog_bitbucket
       branches:
-        include: {{ .Values.GitRepo.gitBranch}}
+        include: {{ .Values.GitRepo.branches}}
       files:
         exclude:  ^(access-go-client/_cli)\/.*$
   - name: artifactory_release_bitbucket_danielt_poc
@@ -15,7 +15,7 @@ resources:
       path: jfrog/artifactory
       gitProvider: JFrog_bitbucket
       branches:
-        include: {{ .Values.GitRepo.gitBranch}}
+        include: {{ .Values.GitRepo.branches}}
       buildOn:
         commit: false
   - name: post_release_property_bag_danielt_poc
