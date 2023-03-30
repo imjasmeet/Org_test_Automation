@@ -3,45 +3,12 @@ resources:
   - name: artifactory_monorepo_bitbucket_danielt_poc
     type: GitRepo
     configuration:
-      path: jfrog/artifactory
-      gitProvider: JFrog_bitbucket
+      path: {{.jfrog-pipelines.sourceRepository}}
+      gitProvider: s_gitHub
       branches:
         include: {{ .Values.GitRepo.branches}}
       files:
         exclude:  ^(access-go-client/_cli)\/.*$
-  - name: artifactory_release_bitbucket_danielt_poc
-    type: GitRepo
-    configuration:
-      path: jfrog/artifactory
-      gitProvider: JFrog_bitbucket
-      branches:
-        include: {{ .Values.GitRepo.branches}}
-      buildOn:
-        commit: false
-  - name: post_release_property_bag_danielt_poc
-    type: PropertyBag
-    configuration:
-      default: -1
-  - name: artifactory_monorepo_release_services_properties_danielt_poc
-    type: PropertyBag
-    configuration:
-      last_released_run_number: -1
-  - name: artifactory_pro_art_jfrog_io_docker_image_danielt_poc
-    type: Image
-    configuration:
-      registry: art_jfrog_io
-      sourceRepository: art-docker-dev-local
-      imageName: jfrog/artifactory-pro
-      imageTag: undefined
-      autoPull: false
-  - name: router_art_jfrog_io_docker_image_danielt_poc
-    type: Image
-    configuration:
-      registry: art_jfrog_io
-      sourceRepository: art-docker-dev-local
-      imageName: jfrog/router
-      imageTag: undefined
-      autoPull: false
 
 pipelines:
 - name: Pipeline_10390_005
