@@ -4,7 +4,7 @@ resources:
   - name: Publish_Template_10390_Helm_002
     type: GitRepo
     configuration:
-      path: {{.jfrog-pipelines.sourceRepository}}
+      path: jfbetapipeorg/Org_test_Automation
       gitProvider: {{ .Values.GitRepo.gitProvider}}
       branches:
         include: {{ .Values.GitRepo.branch}}
