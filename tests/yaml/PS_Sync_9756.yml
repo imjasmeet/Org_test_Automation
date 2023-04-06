@@ -1,0 +1,37 @@
+resources:
+  - name: myRepo
+    type: GITRepo
+    configuration:
+      path: jfbetapipeorg/Org_test_Automation
+      gitProvider: s_gitHub
+      branches:
+        include: submodule_provate
+      recurseSubmodules: true
+
+  - name: propertyBag
+    type: PropertyBag
+    configuration:
+      foo: bar
+      foo1: bar1
+      foo2: bar2
+
+pipelines:
+  - name: demo_manual
+    configuration:
+      integrations:
+        - name: s_gitHub
+    steps:
+      - name: manual_trigger
+        type: Bash
+        configuration:
+          inputResources:
+            - name: myRepo
+          outputResources:
+            - name: propertyBag
+          integrations:
+            - name: s_gitHub
+        execution:
+          onExecute:
+            - pushd $res_myRepo_resourcePath
+            - ls
+            - write_output propertyBag "foo=$run_number"
