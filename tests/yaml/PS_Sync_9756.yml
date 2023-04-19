@@ -34,6 +34,6 @@ pipelines:
           onExecute:
             - pushd $res_myRepo_resourcePath
             - |
-              if ./somecommand | grep -q 'string'; then
+              if ./ls | grep -q 'string'; then
                 echo "matched"
               fi
